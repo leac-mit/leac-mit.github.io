@@ -1,37 +1,58 @@
-
-exclude:
-  - "/vendor/"
-  - "Gemfile"
-  - "Gemfile.lock"
-  - "README.md"
-  - "LICENSE.md"
-  - "*.gemspec"
-
-keep_files:
-  - "CNAME"
-  - ".git"
-  - ".gitignore"
-
+# Welcome to Jekyll!
+#
 
 # Site settings
-title: LEAC
-subtitle: "The Lab Energy Assessment Center at MIT"
-url: "https://leac-mit.github.io/" # the base hostname & protocol for your site
-# baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
-baseurl: ""
-cover: "/assets/cover.png"
-logo: "/assets/logo.png"
+title: MIT Lab Energy Assessment Center
+description: |
+  A program to help MIT Laboratories  
+  reduce their carbon footprint.
+owner: MIT Lab Energy Assessment Center # or company name
+first_published: 2017 # if migrating another site, the year of your first publish
+email: mit-leac@mit.edu
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://leac-mit.github.io/" # the base hostname & protocol for your site
+social:
+  twitter: https://twitter.com/<username>
+  github: https://github.com/<username>
+  linkedin-square: https://linkedin.com/in/<username>
+  facebook-official: https://facebook.com/<username>
+  google-plus-square: https://plus.google.com/u/0/+<username>
+  #email: /contact/
+  #flickr:
+  #instagram:
+  #youtube-square:
+  #spotify:
+  #stack-overflow:
+  #vimeo:
+  #reddit:
+  #stubleupon:
+  #delicious:
+  #pied-piper:
+  #digg:
+  #soundcloud:
+  #deviantart:
+  #angellist:
+  #tumblr-square:
+  #stackexchange:
+  #weibo:
+  #trello:
+  #foursquare:
+  #linux:
+  #bitbucket-square:
+  #vk:
+  #slack:
+  #vine:
+  #weixin:
+  #yelp:
+  #skyatlas:
+  #leanpub:
+  #connectdevelop:
+  #ils:
+  #forumbee:
+  #tripadvisor:
+  #amazon:
 
 # Build settings
 markdown: kramdown
-
-# Google analytics
-# ga_tracking_id: "UA-XXXX-1"
-
-# Category descriptions (for archive pages)
-descriptions:
-  - cat: jekyll
-    desc: "Posts describing Jekyll setup techniques."
-
-  - cat: dummy
-    desc: "Just some placeholder posts, lorem ipsum and the rest."
+#sass:
+#  style: compressed

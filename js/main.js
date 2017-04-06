@@ -1,53 +1,100 @@
-$(document).ready(function(){
+/*
+	Spectral by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
 
+(function($) {
 
-	$("#portfolio-contant-active").mixItUp();
+	skel
+		.breakpoints({
+			xlarge:	'(max-width: 1680px)',
+			large:	'(max-width: 1280px)',
+			medium:	'(max-width: 980px)',
+			small:	'(max-width: 736px)',
+			xsmall:	'(max-width: 480px)'
+		});
 
+	$(function() {
 
-	$("#testimonial-slider").owlCarousel({
-	    paginationSpeed : 500,      
-	    singleItem:true,
-	    autoPlay: 3000,
+		var	$window = $(window),
+			$body = $('body'),
+			$wrapper = $('#page-wrapper'),
+			$banner = $('#banner'),
+			$header = $('#header');
+
+		// Disable animations/transitions until the page has loaded.
+			$body.addClass('is-loading');
+
+			$window.on('load', function() {
+				window.setTimeout(function() {
+					$body.removeClass('is-loading');
+				}, 100);
+			});
+
+		// Mobile?
+			if (skel.vars.mobile)
+				$body.addClass('is-mobile');
+			else
+				skel
+					.on('-medium !medium', function() {
+						$body.removeClass('is-mobile');
+					})
+					.on('+medium', function() {
+						$body.addClass('is-mobile');
+					});
+
+		// Fix: Placeholder polyfill.
+			$('form').placeholder();
+
+		// Prioritize "important" elements on medium.
+			skel.on('+medium -medium', function() {
+				$.prioritize(
+					'.important\\28 medium\\29',
+					skel.breakpoint('medium').active
+				);
+			});
+
+		// Scrolly.
+			$('.scrolly')
+				.scrolly({
+					speed: 1500,
+					offset: $header.outerHeight()
+				});
+
+		// Menu.
+			$('#menu')
+				.append('<a href="#menu" class="close"></a>')
+				.appendTo($body)
+				.panel({
+					delay: 500,
+					hideOnClick: true,
+					hideOnSwipe: true,
+					resetScroll: true,
+					resetForms: true,
+					side: 'right',
+					target: $body,
+					visibleClass: 'is-menu-visible'
+				});
+
+		// Header.
+			if (skel.vars.IEVersion < 9)
+				$header.removeClass('alt');
+
+			if ($banner.length > 0
+			&&	$header.hasClass('alt')) {
+
+				$window.on('resize', function() { $window.trigger('scroll'); });
+
+				$banner.scrollex({
+					bottom:		$header.outerHeight() + 1,
+					terminate:	function() { $header.removeClass('alt'); },
+					enter:		function() { $header.addClass('alt'); },
+					leave:		function() { $header.removeClass('alt'); }
+				});
+
+			}
+
 	});
 
-
-
-
-	$("#clients-logo").owlCarousel({
-		autoPlay: 3000,
-		items : 5,
-		itemsDesktop : [1199,5],
-		itemsDesktopSmall : [979,5],
-	});
-
-	$("#works-logo").owlCarousel({
-		autoPlay: 3000,
-		items : 5,
-		itemsDesktop : [1199,5],
-		itemsDesktopSmall : [979,5],
-	});
-
-
-	// google map
-		var map;
-		function initMap() {
-		  map = new google.maps.Map(document.getElementById('map'), {
-		    center: {lat: -34.397, lng: 150.644},
-		    zoom: 8
-		  });
-		}
-
-
-	// Counter
-
-	$('.counter').counterUp({
-        delay: 10,
-        time: 1000
-    });
-
-
-});
-
-
-
-
+})(jQuery);
