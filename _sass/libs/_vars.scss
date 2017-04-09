@@ -37,42 +37,31 @@
 
 // Palette.
 	$palette: (
-		bg:					#2e3842,
-		fg:					#fff,
-		fg-bold:			#fff,
-		fg-light:			rgba(255,255,255,0.5),
-		border:				#fff,
+		bg:					#EFEFEF,
+		fg:					#545f66,
+		fg-bold:			#545f66,
+		fg-light:			rgba(255,255,255,1),
+		border:				#545f66,
 		border-bg:			rgba(144,144,144,0.25),
-		border2:			#fff,
+		border2:			#545f66,
 		border2-bg:			rgba(144,144,144,0.5),
 
 		accent1: (
-			bg:				#21b2a6,
+			bg:				#829399,
 			fg-bold:		#ffffff,
-			fg:				mix(#21b2a6, #ffffff, 25%),
-			fg-light:		mix(#21b2a6, #ffffff, 40%),
-			border:			rgba(0,0,0,0.125),
-			border-bg:		rgba(255,255,255,0.075),
-			border2:		rgba(0,0,0,0.25),
-			border2-bg:		rgba(255,255,255,0.2)
+			fg:				mix(#829399, #ffffff, 5%),
+			fg-light:		mix(#829399, #ffffff, 15%),
+			border:			rgba(232,252,194,0.325),
+			border-bg:		rgba(255,255,255,0.275),
+			border2:		rgba(232,252,194,0.45),
+			border2-bg:		rgba(255,255,255,0.4)
 		),
 
 		accent2: (
-			bg:				#00ffcc,
+			bg:				#E8FCC2,
 			fg-bold:		#ffffff,
-			fg:				mix(#00ffcc, #ffffff, 25%),
-			fg-light:		mix(#00ffcc, #ffffff, 40%),
-			border:			rgba(0,0,0,0.125),
-			border-bg:		rgba(255,255,255,0.075),
-			border2:		rgba(0,0,0,0.25),
-			border2-bg:		rgba(255,255,255,0.2)
-		),
-
-		accent3: (
-			bg:				#00f0ff,
-			fg-bold:		#ffffff,
-			fg:				mix(#00f0ff, #ffffff, 25%),
-			fg-light:		mix(#00f0ff, #ffffff, 40%),
+			fg:				mix(#E8FCC2, #ffffff, 25%),
+			fg-light:		mix(#E8FCC2, #ffffff, 40%),
 			border:			rgba(0,0,0,0.125),
 			border-bg:		rgba(255,255,255,0.075),
 			border2:		rgba(0,0,0,0.25),
@@ -80,36 +69,47 @@
 		),
 
 		accent4: (
-			bg:				#76ddff,
+			bg:				#B1CC74,
 			fg-bold:		#ffffff,
-			fg:				mix(#76ddff, #ffffff, 25%),
-			fg-light:		mix(#76ddff, #ffffff, 40%),
+			fg:				mix(#B1CC74, #ffffff, 25%),
+			fg-light:		mix(#B1CC74, #ffffff, 40%),
 			border:			rgba(0,0,0,0.125),
 			border-bg:		rgba(255,255,255,0.075),
 			border2:		rgba(0,0,0,0.25),
 			border2-bg:		rgba(255,255,255,0.2)
 		),
 
-		accent5: (
-			bg:				#505393,
-			fg-bold:		#ffffff,
-			fg:				mix(#505393, #ffffff, 25%),
-			fg-light:		mix(#505393, #ffffff, 40%),
-			border:			rgba(0,0,0,0.125),
+		accent3: (
+			bg:				#fff,
+			fg-bold:		#545f66,
+			fg:				#545f66,
+			fg-light:		#545f66,
+			border:			rgba(255,255,255,0.125),
 			border-bg:		rgba(255,255,255,0.075),
+			border2:		rgba(255,255,255,0.25),
+			border2-bg:		rgba(255,255,255,0.2)
+		),
+
+		accent5: (
+			bg:				#2e7215,
+			fg-bold:		#ffffff,
+			fg:				mix(#2e7215, #ffffff, 5%),
+			fg-light:		mix(#2e7215, #ffffff, 0%),
+			border:			rgba(0,0,0,0.125),
+			border-bg:		#2e7215,
 			border2:		rgba(0,0,0,0.25),
 			border2-bg:		rgba(255,255,255,0.2)
 		),
 
 		accent6: (
-			bg:				#ed4933,
+			bg:				#B1CC74,
 			fg-bold:		#ffffff,
-			fg:				mix(#ed4933, #ffffff, 25%),
-			fg-light:		mix(#ed4933, #ffffff, 40%),
+			fg:				mix(#B1CC74, #ffffff, 0%),
+			fg-light:		mix(#B1CC74, #ffffff, 0%),
 			border:			rgba(0,0,0,0.125),
-			border-bg:		rgba(255,255,255,0.075),
+			border-bg:		#2e7215,
 			border2:		rgba(0,0,0,0.25),
-			border2-bg:		rgba(255,255,255,0.2)
+			border2-bg:		#2e7215
 		),
 
 		accent7: (
