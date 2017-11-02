@@ -8,31 +8,95 @@ order: 1
 
 <div style="width: 100%; ">
     <div class="text-center">
-        <div style="width: 100%"> 
+        <div style="width: 100%">
         <hr><h2 class="intro-text text-center"><strong>
                 Laboratory Inspections
             </strong></h2><hr>
         </div>
     </div>
 
-    
+
     <div>
-        <div style="width: 50%; margin-top:2em;" class="text-center "> 
+        <div style="width: 50%; margin-top:2em;" class="text-center ">
             <a href="projects/lab1.html">
                 <img class="img-responsive img-centered center-block" src="../images/drl.jpg" alt=""><h3>
                     Device Research Laboratory </h3>
             </a>
         </div>
-        
-        <div style="width: 50%; margin-top:2em;" class="text-center "> 
+
+        <div style="width: 50%; margin-top:2em;" class="text-center ">
             <a href="projects/lab2.html" >
                 <img class="img-responsive img-centered center-block" src="../images/ehs.jpg" alt=""><h3>
                     Environmental Health and Safety </h3>
             </a>
         </div>
-  
-    <div> 
+    </div>
+    <div class="text-center">
+        <div style="width: 100%">
+        <hr><h2 class="intro-text text-center"><strong>
+                Want to Replicate our Set-up?
+            </strong></h2><hr>
+        </div>
+    </div>
+ <h4> What you'll need </h4>
+ <ol>
+   <li> Laptop for datalogging</li>
+   <li> Router of at least 2.4 GHz </li>
+   <li> Wemo Insight Smart Plug(s) F7C029. Buy them <a href = "http://www.belkin.com/us/support-product?pid=01t80000003JS3FAAW
+"> here </a></li>
+</ol>
+ <h4> Prior Set-up </h4>
+ <ol>
+   <li>Install Linux VM-Ware</li>
+   <li>Set up a wireless network with a wifi router (Wemos are only 2.4 GHz)</li>
+   <li>Set up Wemo to connect with your wifi router, and download the Wemo App See <a href = "assessments/wemosetup.pdf"> Document </a></li>
+ </ol>
+ <h4> Installing the data logging code</h4>
+ <ol> <p>
+  The next step is to install the necessary packages and code on the data logging laptop. Note that we will be using the command line for this process, as well as for running the program later on. If you are new to using the command line, it is a worthwhile investment to get acquainted with the basics. There are several tutorials online for this, such as <a href=" https://www.codecademy.com/learn/learn-the-command-line"> code academy </a>. If you ever encounter any bugs or confusion along the process, remember that the internet is a great resource. It is likely that someone else has encountered similar issues before, and often times a quick Google search will resolve the problem. <br> <br>
+  Our script for data logging is written in Python 2, so the first thing we should do is make sure that Python 2 is installed in the data logging laptop. An easy way to check this is by typing <code> python2 --version </code> in the command line. If Python 2 is installed, you should get an output such as <code> Python 2.7.14 </code>. <br><br>
+    If you do not get a similar output, then you should install Python. A useful resource for this is <a href "http://docs.python-guide.org/en/latest/starting/install/linux/"> python-guide </a>. <br> <br>
 
+    After making sure Python 2 is installed, the next step is to make sure you also have pip installed. This is an essential tool that makes it easy to install other packages. For information on this, click <a href="https://pip.pypa.io/en/latest/installing/"> here </a>
+    <br> <br>
+    Next, we install some packages that are generally useful for developing software: <br>
+    <code> sudo apt-get install python-setuptools python-dev </code><br>
+    Presumably, you might have several different projects on the same laptop (if not now, then possibly in the future). Each project might require slightly different configurations, and it can get tricky to make sure they don’t mess up each other’s settings. For example, suppose you need version 10 or later of hypothetical_package for a project, but another project is only compatible with versions 9 or below. This is problematic, since their requirements interfere with one another! The solution to this type of problem is to work with <b> virtual environments</b>, which allow you to install packages in such a way that they don’t interfere with one another. We will be using virutalenvwrapper. To set it up, run the following commands sequentially:<pre> <code>pip install virtualenv
+sudo pip install virtualenvwrapper
+Export WORKON_HOME=~/Envs
+Source /usr/local/bin/virtualenvwrapper.sh
+</code></pre>
+<br>
+You might find the following references useful: <a href = "http://virtualenvwrapper.readthedocs.io/en/latest/install.html"> this</a> and <a href = "http://docs.python-guide.org/en/latest/dev/virtualenvs/"> this </a> <br> <br> Now, we are able to create a virtual environment for our data logging purposes. You can choose to name it whatever you would like, but here we use the name ‘wemo’. We do so with this command: <code> mkvirtualenv wemo </code>. You should notice that the command line prompt now starts with (wemo) to indicate that you are working inside the virtual environment you just created. If you wish to work outside this environment, you can exit with the command <code> deactivate </code> On the other hand, if you would like to return to the virtual environment, you can do so by typing <code>
+workon wemo </code> <br> <br>
+For the rest of the process, you should be working in the virtual environment you created for this project. <br><br>
+Wemos are originally designed to be used with their commercial app, but we can control them with our Python code by using the appropriate Application Programming Interface (API). We will be using the Ouimeaux Python API for Wemo. Documentation for it can be found <a href = " https://ouimeaux.readthedocs.io/en/latest/."> here </a>. Let’s go ahead and install it by typing in terminal: <pre> <code>pip install ouimeaux
+pip install ouimeaux[server]
+</code></pre>
+Next, we (finally!) download the LEAC scripts for data logging. We do so using git: <code> git clone https://github.com/leac-mit/green_net
+</code> After running this command, you should have a folder, green_net, containing our code files.
+<br> <br>
+Congrats! Now you should have all the necessary software! </p>
 
+ <h4> Running the code</h4>
+ <p>The script you will be running to log data is wemo_logging.py, and it can be run from terminal. Assuming you are inside the green_net/src directory (folder), it can be run with the command: <br><code>python wemo_logging.py 10</code> <br><br>
+Note that the number 10 above is arbitrary, and should be replaced with the amount of wemos that you intend to use to log data. If any errors occur, it is possible that some of the required packages weren’t properly installed, in which case we encourage you to do a Google search based on the error messages you receive.<br><br>
+When the code is run, the first thing it will do is try to detect and communicate with all wemos in the network. After about a minute, it should output a message indicating whether this process was successful, or otherwise the number of wemos it failed to detect. It will also initialize a file in which it will record all the observed data, which are power measurements taken every 5 seconds. The file is titled data.csv, and it is inside the green_net/src/data directory.<br><br>
+Once you would like to stop collecting data and terminate the data logging script, you can execute the following command:<code>exit.sh</code><br><br>
+You should be able to find the collected data in the data.csv file mentioned previously, in a format of the form: <br><br>
+Date (in datetime format), time interval between measurements (in seconds), P_1, P_2, …, P_n <br><br>
+Where P_i indicates the power measurement in Watts for the appliance connected to Wemo i.
+An example with actual numbers: <pre>
+<code>20170412-12:10:00, 5.00537919998, 340, 590, 42610, 205
+20170412-12:10:05, 5.00529003143, 345, 570, 41890, 185
+20170412-12:10:10, 5.10275387764, 340, 520, 42270, 200</code></pre>
+<br>Where the above data indicates the measured values for 4 Wemos, at 3 different times.
+You can also check the data while the code is running by way of the following command:<code>cat data.csv</code> <br><br>
+This will output the data stored thus far into the command line, allowing you to verify that the data is being collected successfully, without having to terminate the code to check. Often times, you will notice some of the columns filled with 0s, which usually means that the corresponding Wemo(s) are not successfully initialized, and are providing the default value of 0 instead of actually measuring the power consumption. <br><br></p>
+
+<h5>Understanding and modifying wemo_logging.py</h5>
+<p>You might be wondering why we made certain choices for the numerical constants in our code. For instance, why record data every 5 seconds, and not some other arbitrary amount of time? It might depend on your application, and it is ideal for the user to tweak it for their particular use. This can be achieved by changing the value of the <code>LOG_FREQ </code>variable at the top of the <code>WemoLogger </code>class.<br><br>
+The overall structure of the code might be confusing to decipher at first, depending on your background with Python and object-oriented programming. For the most part, it shouldn’t be necessary to modify its structure.<br><br>
+
+If you encounter any bugs with our code, or if there is any part of the process for which this guide was confusing, please do not hesitate to contact us!</p>
 </div>
-
